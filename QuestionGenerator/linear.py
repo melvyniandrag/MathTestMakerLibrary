@@ -27,22 +27,22 @@ class LinearEquations(object):
     def __init__(self):
         self.category_name = "linear equations"
         self.all_class_methods = inspect.getmembers(self, predicate=inspect.ismethod)
-        self.question_function_list = [ ( func_name, func ) for ( func_name, func ) in self.all_class_methods if func_name[0:2] == "EQ" ] 
-        self.question_names = [ func()["question_name"] for ( func_name, func ) in self.question_function_list ]
-        self.index_list = [ func()["question_index"] for (func_name, func ) in self.question_function_list ]
-        num_unique_indices = len( set( self.index_list ) )
-        print(num_unique_indices)
-        print(len(self.question_names))
-        assert( len(self.question_names) == num_unique_indices ) 
+        self.question_function_list = dict( [ ( func()["question_name"], func ) for ( func_name, func ) in self.all_class_methods if func_name[0:2] == "EQ" ] ) 
+	print(self.question_function_list)
 
+    def get_question( self, question_name ):
+	ret = self.question_function_list[ question_name ]()
+	return ret
+	
+    def get_question_names( self ):
+	ret = self.question_function_list.keys() 
+	return ret
+	
     def getCategoryName( self ):
         return self.category_name
 
     def get_all_class_methods(self):
         return self.all_class_methods
-
-    def get_question_names(self):
-        return self.question_names
 
     def get_available_questions(self):
         return list(self.questions)
