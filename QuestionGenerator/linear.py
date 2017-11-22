@@ -32,6 +32,7 @@ class LinearEquations(object):
 
     def get_question( self, question_name ):
 	ret = self.question_function_list[ question_name ]()
+	ret["wrong_answers"] = ["wrong", "wrong", "wrong"]
 	return ret
 	
     def get_question_names( self ):

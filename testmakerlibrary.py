@@ -40,7 +40,7 @@ class TestMakerLibrary( object ):
                     ret_json = {
                             "category_name": question_request[ "question_category" ],
                             "points": question_request[ "points" ],
-                            "question": self.linear_equations.get_question( question_request[ "selected_question" ] )
+                            "question": self.linear_equations.get_question( question_request[ "selected_question" ] ),
                            }
                     ret.append( ret_json )
             else:
