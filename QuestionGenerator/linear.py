@@ -28,17 +28,22 @@ class LinearEquations(object):
         self.category_name = "linear equations"
         self.all_class_methods = inspect.getmembers(self, predicate=inspect.ismethod)
         self.question_function_list = dict( [ ( func()["question_name"], func ) for ( func_name, func ) in self.all_class_methods if func_name[0:2] == "EQ" ] ) 
-	print(self.question_function_list)
 
     def get_question( self, question_name ):
-	ret = self.question_function_list[ question_name ]()
-	ret["wrong_answers"] = ["wrong", "wrong", "wrong"]
-	return ret
-	
+        ret = self.question_function_list[ question_name ]()
+        ret["wrong_answers"] = ["wrong", "wrong", "wrong"]
+        import random
+        l = [0,1,2,3]
+        print("\n\n\n")
+        for i in l: 
+            print(type(i) )
+        ret["correct_answer_idx"] = random.choice(l)
+        return ret
+    
     def get_question_names( self ):
-	ret = self.question_function_list.keys() 
-	return ret
-	
+        ret = self.question_function_list.keys() 
+        return ret
+    
     def getCategoryName( self ):
         return self.category_name
 
