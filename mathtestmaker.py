@@ -1,7 +1,7 @@
 from linear import LinearEquations
 from quadratic import QuadraticEquations
 
-class TestMakerLibrary( object ):
+class MathTestMaker( object ):
     def __init__( self ):
         self.linear_equations = LinearEquations()
         self.quadratic_equations = QuadraticEquations()
