@@ -1,4 +1,4 @@
-from mathtestmakerlibrary import MathTestMaker
+from mathtestmaker import MathTestMaker
 import pprint
 
 testmaker = TestMakerLibrary()

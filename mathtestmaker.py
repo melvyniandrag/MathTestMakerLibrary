@@ -1,5 +1,5 @@
-from linear import LinearEquations
-from quadratic import QuadraticEquations
+from QuestionGenerator.linear import LinearEquations
+from QuestionGenerator.quadratic import QuadraticEquations
 
 class MathTestMaker( object ):
     def __init__( self ):
