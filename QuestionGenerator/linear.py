@@ -20,7 +20,7 @@ import random
 import utility
 import inspect
 from fractions import Fraction
-from returnVerifier import returnVerifier
+#from returnVerifier import returnVerifier
 
 class LinearEquations(object):
     """
@@ -48,9 +48,8 @@ class LinearEquations(object):
     we are just using primitive LaTeX syntax. 
     """
     def __init__(self):
-        self.category_name = "linear equations"
         self.questions = dict( [
-            ( "Find the integer x intercept of a line in slope intercept form with nonzero slope",
+            ( "Find the integer x intercept of a line in slope intercept form with nonzero slope.",
               self.findIntegralXIntercept_SIF_NonZeroM ),
             ( "Find the integer x intercept of a line in slope intercept with nonzero fractional slope.",
               self.findIntegralXIntercept_SIF_NonZeroFracM ),
@@ -62,21 +61,13 @@ class LinearEquations(object):
         """
         return self.questions.keys() 
 
-    def getQuestions(self, questionNames ):
+    def getQuestion(self, name, numChoices, points ):
         """
-        @param questionNames: Desired questions. The names should be keys into the self.questions dict.
-        @return: A 2-tuple containing a list of generated questions and a list of questions that couldn't be generated.
+        TBD
         """
-        generated = []
-        errors = []
-        for name in questionNames:
-            try:
-                generated.append( self.questions[name]() )
-            except Exception as e:
-                errors.append( name )
-        return generated, errors
+        return self.questions[name]( numChoices, points )
 
-    def findIntegralXIntercept_SIF_NonZeroM(self):
+    def findIntegralXIntercept_SIF_NonZeroM(self, numChoices, points):
         m = 0
         while(m == 0):
             m = random.randint( -20, 20)
@@ -86,8 +77,11 @@ class LinearEquations(object):
         b = m * multiplier 
         x_intercept = -1 * b // m
         d = {}
-        d["problem_statement"] = "Find the x intercept of $y = {}x + {}$.".format(m, b) 
-        d["correct_answer"] = x_intercept
+        d["problemStatement"] = "Find the x intercept of $y = {}x + {}$.".format(m, b) 
+        d["correctAnswer"] = x_intercept
+        d["correctAnswerIdx"] = utility.getCorrectAnswerIndex( numChoices )
+        d["wrongAnswers"] = utility.generateWrongAnswers( numChoices, x_intercept, "ints" )
+        d["points"] = points
         d["solution"] = [
                           (                "y = {}x + {}".format(m, b), "Find the x intercept."),
                           (                "0 = {}x + {}".format(m, b), "Set y to zero."), 
@@ -98,7 +92,7 @@ class LinearEquations(object):
                         ]
         return d   
     
-    def findIntegralXIntercept_SIF_NonZeroFracM(self):
+    def findIntegralXIntercept_SIF_NonZeroFracM(self, numChoices, points):
         m_numerator = 0
         while (m_numerator == 0):
             m_numerator = random.randint( -30, 30)
@@ -111,8 +105,11 @@ class LinearEquations(object):
         b = m_numerator * multiplier 
         x_intercept = -1 * m_denominator * b // m_numerator
         d = {}
-        d["problem_statement"] = "Find the x intercept of $y = \\frac{{{}}}{{{}}}x + {}$.".format(m_numerator, m_denominator, b) 
-        d["correct_answer"] = x_intercept
+        d["problemStatement"] = "Find the x intercept of $y = \\frac{{{}}}{{{}}}x + {}$.".format(m_numerator, m_denominator, b) 
+        d["correctAnswer"] = x_intercept
+        d["correctAnswerIdx"] = utility.getCorrectAnswerIndex( numChoices )
+        d["wrongAnswers"] = utility.generateWrongAnswers( numChoices, x_intercept, "ints" )
+        d["points"] = points
         d["solution"] = [
                           (                "y = \\frac{{{}}}{{{}}}x + {}".format(m_numerator, m_denominator, b), "Find the x intercept."),
                           (                "0 = \\frac{{{}}}{{{}}}x + {}".format(m_numerator, m_denominator, b), "Set y to zero."), 

@@ -1,13 +1,13 @@
 from mathtestmaker import MathTestMaker
 import pprint
 
-testmaker = TestMakerLibrary()
+testmaker = MathTestMaker()
 question_requests = \
 		[
 			{
-				'question_category': 'linear equations',
-				'selected_question': 'Find the integer x intercept of a line in slope intercept form with nonzero slope.',
-				'count': 2,
+				'category': 'linear equations',
+				'name': 'Find the integer x intercept of a line in slope intercept form with nonzero slope.',
+				'numChoices': 4,
 				'points': 10
 			},
 		]

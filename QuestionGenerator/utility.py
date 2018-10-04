@@ -1,5 +1,24 @@
 import random
 
+def getCorrectAnswerIndex( numChoices ):
+    return random.randint( 1, numChoices + 1 )
+
+def generateWrongAnswers( numChoices, correctAnswer, dataType ):
+    """
+    TBD.
+    Wrong answers usually follow some patterns on tests.
+    * the negative of the right answer
+    * a value close to the right answer
+    * < particularly tricky to implement computationally > a deliberately misleading value, perhaps can
+      be arrived at through some common miscalculation during problem solution. Maybe this function should take
+      a list of deliberately misleading values as a parameter.
+    * etc.
+    """
+    if dataType == "ints":
+        return [ correctAnswer + 1 for i in range( numChoices ) ] # TBD put some good logic here.
+    else:
+        assert( False ) # TBD decide how to handle this elegantly.
+
 def get_integer_in_range_excluding_specified(low=None,  high=None, exclude_list=None):
     """
     random.randint(a, b) is inclusive.        

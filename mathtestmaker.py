@@ -1,64 +1,33 @@
 from QuestionGenerator.linear import LinearEquations
-from QuestionGenerator.quadratic import QuadraticEquations
 
 class MathTestMaker( object ):
     def __init__( self ):
-        self.linear_equations = LinearEquations()
-        self.quadratic_equations = QuadraticEquations()
-        self.question_categories = [
-                                        self.linear_equations.getCategoryName(),
-                                        self.quadratic_equations.getCategoryName(),
-                                   ]
-    def getAllQuestionCategories( self ):
-        return self.question_categories
+        self.questionGenerators = { 
+                "linear equations": LinearEquations(),
+        }
 
-    def getLinearQuestionList( self ):
-        return self.linear_equations.get_question_names()
+    def getQuestionCategories( self ):
+        return self.questionGenerators.keys()
 
-    def getQuadraticQuestionList( self ):
-        return self.quadratic_equations.get_question_names()
-
-    
-    def getSelectedQuestions( self, question_requests ):
+    def getSelectedQuestions( self, Requests ):
         """
-        selected_questions_with_options - a list of the form:
-            [ 
-                {
-                  category_name: xxx,
-                          selected_question: xxx,
-                  count: xxx,
-                  points: xxx
-                }
-        return a list of the form 
-            [
-                {     
-                    category_name: xxx
-                    question: question json from library
-                    points : points
-                }
-            ]
-                
+        @param Requests: A list of dictionaries with the following keys:
+            * category: the category of question
+            * name: the name of the question, a key into the question generator
+            * numChoices: the total number of answer choices for the indicated question
+            * points: the number of points to be assigned to the particular question
+        @return: A list of questions ready to be processed by the LaTeX generator
+        @return: A list of errors encountered during question generation
         """
         ret = []
-        for question_request in question_requests:
-            if(question_request[ "question_category" ] == self.linear_equations.getCategoryName()):
-                for question_instance in range( question_request[ "count" ] ):
-                    ret_json = {
-                            "category_name": question_request[ "question_category" ],
-                            "points": question_request[ "points" ],
-                            "question": self.linear_equations.get_question( question_request[ "selected_question" ] ),
-                           }
-                    ret.append( ret_json )
-            elif(question_request[ "question_category" ] == self.quadratic_equations.getCategoryName()):
-                for question_instance in range( question_request[ "count" ] ):
-                    ret_json = {
-                            "category_name": question_request[ "question_category" ],
-                            "points": question_request[ "points" ],
-                            "question": self.quadratic_equations.get_question( question_request[ "selected_question" ] ),
-                           }
-                    ret.append( ret_json )
+        errors = []
+        for r in Requests:
+            if r["category"] in self.getQuestionCategories():
+                generator = self.questionGenerators[ r["category"] ]
+                try:
+                    ret.append( generator.getQuestion( r["name"], r["numChoices"], r["points"] ) )
+                except Exception as e:
+                    errors.append( ( r["category"], r["name"], str(e) ) )
             else:
-                print( question_request[ "question_category" ] )
-                assert(false) # this should be handled otherwise. Prob not bring down the application.
-
-        return ret
+                errors.append( ( r["category"], None, "category '{}' is not implemented".format( r["category"] ) ) )
+        return ret, errors
