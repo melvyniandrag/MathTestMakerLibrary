@@ -17,7 +17,7 @@ As of June 21st 2017, the functions return a dictionary:
 }
 """
 import random
-import utility
+from . import utility
 import inspect
 from fractions import Fraction
 #from returnVerifier import returnVerifier
