@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-11-19 08:33-0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: QuestionGenerator/linear.py:86
+msgid "Question Statement."
+msgstr ""
+
+#: QuestionGenerator/linear.py:93
+msgid "Find the x intercept."
+msgstr ""
+
+#: QuestionGenerator/linear.py:94
+msgid "Set y to zero."
+msgstr ""
+
+#: QuestionGenerator/linear.py:95
+msgid "Subtract b from both sides."
+msgstr ""
+
+#: QuestionGenerator/linear.py:96 QuestionGenerator/linear.py:98
+msgid "Simplify."
+msgstr ""
+
+#: QuestionGenerator/linear.py:97
+msgid "Divide both sides by m."
+msgstr ""
+

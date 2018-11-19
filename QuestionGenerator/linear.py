@@ -20,6 +20,7 @@ import random
 from . import utility
 import inspect
 from fractions import Fraction
+from stringFormatter import StringFormatter
 #from returnVerifier import returnVerifier
 
 class LinearEquations(object):
@@ -77,18 +78,19 @@ class LinearEquations(object):
         b = m * multiplier 
         x_intercept = -1 * b // m
         d = {}
-        d["problemStatement"] = "Find the x intercept of $y = {}x + {}$.".format(m, b) 
+        problemStatement = StringFormatter().format("Question Statement.")
+        d["problemStatement"] = problemStatement.format(m, b) 
         d["correctAnswer"] = x_intercept
         d["correctAnswerIdx"] = utility.getCorrectAnswerIndex( numChoices )
         d["wrongAnswers"] = utility.generateWrongAnswers( numChoices, x_intercept, "ints" )
         d["points"] = points
         d["solution"] = [
-                          (                "y = {}x + {}".format(m, b), "Find the x intercept."),
-                          (                "0 = {}x + {}".format(m, b), "Set y to zero."), 
-                          ("0 - {} = {}x + {} - {}".format(b, m, b, b), "Subtract b from both sides."),
-                          (                   "{} = {}x".format(-b, m), "Simplify."),
-                          (                "{} / {} = x".format(-b, m), "Divide both sides by m."),
-                          (                         "{}".format(-b//m), "Simplify.")
+                          (                "y = {}x + {}".format(m, b), StringFormatter().format("Find the x intercept.")),
+                          (                "0 = {}x + {}".format(m, b), StringFormatter().format("Set y to zero.")), 
+                          ("0 - {} = {}x + {} - {}".format(b, m, b, b), StringFormatter().format("Subtract b from both sides.")),
+                          (                   "{} = {}x".format(-b, m), StringFormatter().format("Simplify.")),
+                          (                "{} / {} = x".format(-b, m), StringFormatter().format("Divide both sides by m.")),
+                          (                         "{}".format(-b//m), StringFormatter().format("Simplify."))
                         ]
         return d   
     
@@ -105,17 +107,17 @@ class LinearEquations(object):
         b = m_numerator * multiplier 
         x_intercept = -1 * m_denominator * b // m_numerator
         d = {}
-        d["problemStatement"] = "Find the x intercept of $y = \\frac{{{}}}{{{}}}x + {}$.".format(m_numerator, m_denominator, b) 
+        d["problemStatement"] = StringFormatter().format("Question Statement 2.").format(m_numerator, m_denominator, b) 
         d["correctAnswer"] = x_intercept
         d["correctAnswerIdx"] = utility.getCorrectAnswerIndex( numChoices )
         d["wrongAnswers"] = utility.generateWrongAnswers( numChoices, x_intercept, "ints" )
         d["points"] = points
         d["solution"] = [
-                          (                "y = \\frac{{{}}}{{{}}}x + {}".format(m_numerator, m_denominator, b), "Find the x intercept."),
-                          (                "0 = \\frac{{{}}}{{{}}}x + {}".format(m_numerator, m_denominator, b), "Set y to zero."), 
-                          ("0 - {} = \\frac{{{}}}{{{}}}x + {} - {}".format(b, m_numerator, m_denominator, b, b), "Subtract b from both sides."),
-                          (                  "{} = \\frac{{{}}}{{{}}}x ".format(-b, m_numerator, m_denominator), "Simplify."),
-                          (          "{} \\times \\frac{{{}}}{{{}}} = x".format(-b, m_denominator, m_numerator), "Divide both sides by m."),
-                          (                                  "{}".format(-1 * m_denominator * b // m_numerator), "Simplify.")
+                          (                "y = \\frac{{{}}}{{{}}}x + {}".format(m_numerator, m_denominator, b), StringFormatter().format("Find the x intercept.")),
+                          (                "0 = \\frac{{{}}}{{{}}}x + {}".format(m_numerator, m_denominator, b), StringFormatter().format("Set y to zero.")), 
+                          ("0 - {} = \\frac{{{}}}{{{}}}x + {} - {}".format(b, m_numerator, m_denominator, b, b), StringFormatter().format("Subtract b from both sides.")),
+                          (                  "{} = \\frac{{{}}}{{{}}}x ".format(-b, m_numerator, m_denominator), StringFormatter().format("Simplify.")),
+                          (          "{} \\times \\frac{{{}}}{{{}}} = x".format(-b, m_denominator, m_numerator), StringFormatter().format("Divide both sides by m.")),
+                          (                                  "{}".format(-1 * m_denominator * b // m_numerator), StringFormatter().format("Simplify."))
                         ]
         return d   
