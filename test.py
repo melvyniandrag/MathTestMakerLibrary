@@ -11,7 +11,8 @@ question_requests = \
 				'points': 10
 			},
 		]
-questions = testmaker.getSelectedQuestions( question_requests )
-for q in questions:	
-	CustomPrettyPrinter().pprint(q)
+questions, errors = testmaker.getSelectedQuestions( question_requests )
+for i, q in enumerate(questions):
+    print("================ {} ===================".format(i))
+    CustomPrettyPrinter().pprint(q)
 

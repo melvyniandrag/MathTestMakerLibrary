@@ -1,4 +1,4 @@
-from QuestionGenerator.linear import LinearEquations
+from questiongenerator.linear import LinearEquations
 
 class MathTestMaker( object ):
     def __init__( self ):
