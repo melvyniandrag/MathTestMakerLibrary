@@ -6,6 +6,20 @@ of some sort that's often associated with the testbook manufacturer. That's fine
 a free solution for everyone to use. This library provides an API that allows the user to request a number
 of questions of certain types, and then spits out some fresh questions and solutions matching the request.
 
+## TL;DR
+Just clone this repo somewhere and add it to your PYTHONPATH.
+i.e. if you clone to '/home/theodore/Desktop', then 'export PYTHONPATH='$PYTHONPATH:/home/theodore/Desktop/MathTestMaker'
+
+Then you can run the test scripts like
+```
+$ cd /home/theodore/Desktop/MathTestMaker
+$ python3 test.py
+# output
+$ cd /home/theodore/Desktop/MathTestMaker/questiongenerators
+$ python3 testLinear.py
+# output
+```
+
 ## Benefits
 * It's free
 * It can quickly generate a massive amount of unique tests
