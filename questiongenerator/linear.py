@@ -54,6 +54,9 @@ class LinearEquations(object):
             ( "Find the integer x intercept of a line in slope intercept with nonzero fractional slope.",
               self.findIntegralXIntercept_SIF_NonZeroFracM ),
         ] )
+        self.codeName = "linear_equations"
+        self.displayName = "Linear Equations"
+        self.categoryInformation = "A set of questions involving straight lines in standard form or slope-intercept form."
 
     def getQuestionNames( self ):
         """

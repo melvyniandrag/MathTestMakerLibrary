@@ -3,7 +3,7 @@ from questiongenerator.linear import LinearEquations
 class MathTestMaker( object ):
     def __init__( self ):
         self.questionGenerators = { 
-                "linear_equations": LinearEquations(),
+                "Linear Equations": LinearEquations(),
         }
 
     def getQuestionCategories( self ):
