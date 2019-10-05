@@ -1,0 +1,18 @@
+\documentclass{article}
+\title{Sample Quiz}
+\date\today
+\author{john and jane}
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\BLOCK{ for entry in arguments }
+	\item \VAR{entry.problemStatement}"
+	\begin{enumerate}
+		\BLOCK{ for answer in entry.answers }
+			\item \VAR{ answer }
+		\BLOCK{ endfor }
+	\end{enumerate}
+\BLOCK{ endfor }
+\end{enumerate}
+\end{document}
