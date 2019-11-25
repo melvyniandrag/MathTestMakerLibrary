@@ -3,11 +3,14 @@ from questiongenerator.linear import LinearEquations
 class MathTestMaker( object ):
     def __init__( self ):
         self.questionGenerators = { 
-                "Linear Equations": LinearEquations(),
+                "linear_equations": LinearEquations(),
         }
 
     def getQuestionCategories( self ):
-        return self.questionGenerators.keys()
+        categories = {
+            "linear_equations": "Linear Equations",
+        }
+        return categories 
 
     def getSelectedQuestions( self, Requests ):
         """
