@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{enumitem}
+
+\title{\textbf{Math Exam}} 
+\author{
+Melvyn Drag
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% This is a regular LaTeX comment
+\section{\VAR{questionName1}}
+\#{This is a long-form Jinja comment}
+\begin{enumerate}[label=(\alph*)]
+\BLOCK{ for x in range(0, 3) }
+  \item Counting: \VAR{x}
+\BLOCK{ endfor }
+\end{enumerate}
+
+\section{\VAR{questionName2}}
+\begin{enumerate}
+%% for listItem in users
+	%% for letter in listItem.user
+	  \item Counting: \VAR{letter}
+	%% endfor
+%% endfor
+\end{enumerate}
+
+
+\end{document}
