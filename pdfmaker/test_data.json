@@ -1,0 +1,24 @@
+{
+"linear_equations":
+	[
+		{
+			"question":"find the slope",
+			"answers":["1","2","100","-100"]
+		},
+		{
+			"question":"find the x intercept",
+			"answers":["1","2","100","-100"]
+		}	
+	],
+"quadratic_equations":
+	[
+		{
+			"question":"question",
+			"answers":["1","2","100","-100"]
+		},
+		{
+			"question":"question",
+			"answers":["1","2","100","-100"]
+		}	
+	]
+}

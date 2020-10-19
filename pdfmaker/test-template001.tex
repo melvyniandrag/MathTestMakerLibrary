@@ -1,0 +1,39 @@
+%# Input comes like
+%# { 'linear_equations' :  
+%# 		[
+%#			{ 'question': 'question',
+%#			  'answers': [ "1", "2", "100", "-100"] }		
+%#			{ 'question': 'question',
+%#			  'answers': [ "1", "2", "100", "-100"] }		
+%#      ],
+%#  'quadratic_equations' : 
+%# 		[
+%#			{ 'question': 'question',
+%#			  'answers': [ "1", "2", "100", "-100"] }		
+%#			{ 'question': 'question',
+%#			  'answers': [ "1", "2", "100", "-100"] }		
+%#      ]
+%# }
+\documentclass{article}
+\usepackage{enumitem}
+
+\title{\textbf{Math Exam}} 
+\author{
+Melvyn Drag
+}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%% for listItem in linear_equations 
+\subsection{ \VAR{ listItem.question } }	
+\begin{enumerate}
+	%% for value in listItem.answers
+	  \item Counting: \VAR{value}
+	%% endfor
+\end{enumerate}
+%% endfor
+
+\end{document}
