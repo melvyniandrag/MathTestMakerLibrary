@@ -3,4 +3,6 @@ __pycache__/
 .vscode
 *.log
 *.aux
+pdfmaker/*.log
+pdfmaker/*.aux
 *.pdf
